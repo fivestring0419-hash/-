@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+/* 헤더 - 점수판과 타이머 */
+.game-header {
+    margin-bottom: 30px;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.score, .timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 게임 영역 */
+.game-area {
+    margin-bottom: 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.hole {
+    width: 80px;
+    height: 80px;
+    background: #8B4513;
+    border-radius: 50%;
+    border: 4px solid #654321;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hole:hover {
+    transform: scale(1.05);
+}
+
+.hole.mole {
+    background-image: url('https://via.placeholder.com/60x60/8B4513/FFFFFF?text=🐹');
+    background-size: 50px 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: moleAppear 0.3s ease-out;
+}
+
+.hole.hit {
+    animation: hitEffect 0.3s ease-out;
+    background-color: #FFD700;
+}
+
+@keyframes moleAppear {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes hitEffect {
+    0% {
+        transform: scale(1);
+        background-color: #8B4513;
+    }
+    50% {
+        transform: scale(1.2);
+        background-color: #FFD700;
+    }
+    100% {
+        transform: scale(1);
+        background-color: #8B4513;
+    }
+}
+
+/* 버튼 */
+.game-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.start-btn {
+    background: #4CAF50;
+    color: white;
+}
+
+.start-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+.start-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.reset-btn {
+    background: #f44336;
+    color: white;
+}
+
+.reset-btn:hover {
+    background: #da190b;
+    transform: translateY(-2px);
+}
+
+/* 팝업 */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-overlay.show {
+    display: flex;
+}
+
+.popup {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    width: 90%;
+}
+
+.popup h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.final-score {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.final-score span:last-child {
+    font-weight: bold;
+    color: #4CAF50;
+    font-size: 24px;
+}
+
+.grade {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.grade.excellent {
+    background: #4CAF50;
+    color: white;
+}
+
+.grade.good {
+    background: #2196F3;
+    color: white;
+}
+
+.grade.normal {
+    background: #FF9800;
+    color: white;
+}
+
+.grade.poor {
+    background: #f44336;
+    color: white;
+}
+
+#playAgainBtn {
+    background: #4CAF50;
+    color: white;
+}
+
+#playAgainBtn:hover {
+    background: #45a049;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+    .game-container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .hole {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .grid {
+        gap: 10px;
+        max-width: 220px;
+    }
+    
+    .value {
+        font-size: 24px;
+    }
+    
+    .game-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 320px) {
+    .hole {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .grid {
+        max-width: 180px;
+        gap: 8px;
+    }
+}
