@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>두더지 잡기 게임</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <div class="score-board">
+                <div class="score">
+                    <span class="label">점수</span>
+                    <span class="value" id="score">0</span>
+                </div>
+                <div class="timer">
+                    <span class="label">시간</span>
+                    <span class="value" id="timer">30</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-area">
+            <div class="grid" id="gameGrid">
+                <div class="hole" data-index="0"></div>
+                <div class="hole" data-index="1"></div>
+                <div class="hole" data-index="2"></div>
+                <div class="hole" data-index="3"></div>
+                <div class="hole" data-index="4"></div>
+                <div class="hole" data-index="5"></div>
+                <div class="hole" data-index="6"></div>
+                <div class="hole" data-index="7"></div>
+                <div class="hole" data-index="8"></div>
+            </div>
+        </main>
+
+        <footer class="game-controls">
+            <button class="btn start-btn" id="startBtn">게임 시작</button>
+            <button class="btn reset-btn" id="resetBtn">리셋</button>
+        </footer>
+    </div>
+
+    <!-- 게임 종료 팝업 -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+            <h2>게임 종료!</h2>
+            <div class="final-score">
+                <span>최종 점수: </span>
+                <span id="finalScore">0</span>
+            </div>
+            <div class="grade" id="grade">좋아요!</div>
+            <button class="btn" id="playAgainBtn">다시 하기</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
